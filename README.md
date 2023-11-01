@@ -1,29 +1,47 @@
-# testAssignment
+#Tree Explorer App
+This Vue.js application allows users to explore a tree structure of folders and files. Users can edit the names of items and delete them within the tree. The state of the application is managed using Pinia.
 
-This template should help get you started developing with Vue 3 in Vite.
+##Project Structure
+The initial structure of the tree is as follows:
 
-## Recommended IDE Setup
+Dir 1
+.Dir 1-1
+...File 1-1-1
+..File 1-2
+Dir 2
+..Dir 2-1
+..File 2-2
+File 2
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+##Requirements
+Docker
+Docker Compose
 
-## Customize configuration
+##Getting Started
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
+1. Clone the repository:
 
 ```sh
-npm run build
+git clone https://github.com/dimnik70/testAssignment.git
+cd tree-explorer-app
 ```
+
+2. Build and run the Docker containers:
+
+```sh
+docker-compose up --build
+```
+
+This command will download the necessary dependencies, build the Vue.js application, and start the development server.
+
+3. Access the application in your browser:
+
+```
+http://localhost
+```
+
+##Technologies Used
+
+- Vue.js
+- Pinia
+- Docker

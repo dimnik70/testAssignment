@@ -1,13 +1,14 @@
 <template>
   <div class="container mx-auto mt-6 border p-6 max-w-[25%]">
     <div class="text-center mb-6 text-2xl font-bold">Test Assignment</div>
-
-    <TreeNode
-      :node="treeItem"
-      v-for="treeItem in tree"
-      :key="treeItem.name"
-      @deleteNode="deleteNode"
-    />
+    <TreeNode :node="treeItem" v-for="treeItem in trees" :key="treeItem.name" />
+    <button
+      type="button"
+      @click="reset"
+      class="bg-pink-500 text-white p-2 rounded hover:bg-pink-700 w-[100%] mt-8"
+    >
+      Reset
+    </button>
   </div>
 </template>
 
@@ -22,18 +23,20 @@
     },
     setup() {
       const treeStore = useTreeStore();
-      const tree = ref([]);
-      const deleteNode = (node) => {
-        console.log("PROPS", node);
-        treeStore.deleteNode(node);
+      let trees = ref([]);
+      const reset = () => {
+        treeStore.$reset();
       };
-      onMounted(() => {
-        tree.value = treeStore.tree;
-      });
 
+      onMounted(() => {
+        trees.value = treeStore.tree;
+        treeStore.$subscribe((mutation, state) => {
+          trees.value = state.tree;
+        });
+      });
       return {
-        tree,
-        deleteNode,
+        trees,
+        reset,
       };
     },
   };

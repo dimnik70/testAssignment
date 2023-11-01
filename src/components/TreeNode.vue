@@ -27,7 +27,7 @@
       Редактировать
     </button>
     <button
-      @click="deleteNodeNew"
+      @click="deleteNode"
       class="ml-2 bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
     >
       Удалить
@@ -62,7 +62,6 @@
       const treeStore = useTreeStore();
       const isOpen = ref(true);
       const editing = ref(false);
-
       const toggle = () => {
         isOpen.value = !isOpen.value;
       };
@@ -83,14 +82,7 @@
         editing.value = false;
       };
 
-      const deleteNodeNew = () => {
-        console.log("deletenodenew ...");
-        emit("deleteNode", props.node);
-      };
-
       const deleteNode = () => {
-        //  console.log("PROPS", props.node);
-
         treeStore.deleteNode(props.node);
       };
 
@@ -102,7 +94,6 @@
         saveNode,
         deleteNode,
         hasChildren,
-        deleteNodeNew,
       };
     },
   };

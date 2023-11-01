@@ -24,33 +24,36 @@ export const useTreeStore = defineStore("tree", {
     ],
   }),
   actions: {
-    setTree(newTree) {
-      this.tree = newTree;
-    },
     editNode(node, newName) {
-      console.log("EDIT", node);
       if (node) {
         node.name = newName;
       }
     },
     deleteNode(node) {
-      console.log("DELETE", node);
       if (node) {
-        //   console.log(this.tree);
+        const deleteRecursive = (parentNode, targetNode) => {
+          if (parentNode.children && parentNode.children.includes(targetNode)) {
+            parentNode.children = parentNode.children.filter(
+              (n) => n !== targetNode
+            );
+            return true;
+          } else {
+            for (const childNode of parentNode.children || []) {
+              if (deleteRecursive(childNode, targetNode)) {
+                return true;
+              }
+            }
+          }
+          return false;
+        };
 
-        console.log("NODE", node);
-        const parentNode = this.tree.find(
-          (n) => n.children && n.children.includes(node)
-        );
-        //   console.log("parentNode", parentNode);
-        if (parentNode) {
-          parentNode.children = parentNode.children.filter((n) => n !== node);
-        } else {
-          const newTree = this.tree.filter((n) => n !== node);
-          this.setTree(newTree);
-          this.$patch();
+        for (let i = 0; i < this.tree.length; i++) {
+          if (deleteRecursive(this.tree[i], node)) {
+            return;
+          }
         }
-        //this.$patch({this.tree:result});
+
+        this.tree = this.tree.filter((n) => n !== node);
       }
     },
   },

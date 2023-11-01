@@ -29,7 +29,21 @@ git clone https://github.com/dimnik70/testAssignment.git
 cd tree-explorer-app
 ```
 
-2. Build and run the Docker containers:
+Remember to make sure you have Node.js and npm installed on your system before running the npm install and npm run build commands.
+
+2. Install dependencies:
+
+```sh
+npm install
+```
+
+3. Build the project:
+
+```sh
+npm run build
+```
+
+4. Build and run the Docker containers:
 
 ```sh
 docker-compose up --build
@@ -37,7 +51,7 @@ docker-compose up --build
 
 This command will download the necessary dependencies, build the Vue.js application, and start the development server.
 
-3. Access the application in your browser:
+5. Access the application in your browser:
 
 ```
 http://localhost

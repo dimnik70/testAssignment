@@ -1,23 +1,26 @@
-#Tree Explorer App
+# Tree Explorer App
+
 This Vue.js application allows users to explore a tree structure of folders and files. Users can edit the names of items and delete them within the tree. The state of the application is managed using Pinia.
 
-##Project Structure
+## Project Structure
+
 The initial structure of the tree is as follows:
 
-Dir 1
-.Dir 1-1
-...File 1-1-1
-..File 1-2
-Dir 2
-..Dir 2-1
-..File 2-2
-File 2
+- Dir 1
+  - Dir 1-1
+    - File 1-1-1
+  - File 1-2
+- Dir 2
+  - Dir 2-1
+  - File 2-2
+- File 2
 
-##Requirements
+## Requirements
+
 Docker
 Docker Compose
 
-##Getting Started
+## Getting Started
 
 1. Clone the repository:
 
@@ -40,7 +43,7 @@ This command will download the necessary dependencies, build the Vue.js applicat
 http://localhost
 ```
 
-##Technologies Used
+## Technologies Used
 
 - Vue.js
 - Pinia
